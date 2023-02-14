@@ -26,10 +26,6 @@ public class PointAspect {
 //        System.out.println("after");
 //    }
 
-//    @Before(value = "@annotation(com.example.aop.annotation.Point) && args(postDto)")
-//    public void beforeAdvice(JoinPoint joinPoint, PostDto postDto){
-//        System.out.println("before");
-//    }
 
     @AfterReturning(value = "@annotation(com.example.aop.annotation.Point) && args(member, ..)")
     public void plus(JoinPoint joinPoint,Member member) {
@@ -62,10 +58,3 @@ public class PointAspect {
 
 
 }
-//
-//@Component
-//@RequiredArgsConstructor
-//class Point{
-//    private final MemberRepo memberRepo;
-//
-//}
