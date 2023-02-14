@@ -39,13 +39,13 @@ public class PointAspect {
 //        System.out.println("joinPoint Args : " + Arrays.toString(joinPoint.getArgs()));
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Point point = methodSignature.getMethod().getAnnotation(Point.class);
-        System.out.println("Method signature first value: " + point.firstValue());
+        System.out.println("Method signature first value: " + point.type());
 
-        if (point.firstValue().equals("create")){
+        if (point.type() == Point.Type.CREATE){
             member.changePoint(10);
             member.changeCountUp();
             memberRepo.save(member);
-        } else if (point.firstValue().equals("delete")) {
+        } else if (point.type() == Point.Type.DELETE) {
             member.changePoint(-10);
             member.changeCountDown();
             memberRepo.save(member);

@@ -11,13 +11,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.example.aop.annotation.Point.Type.*;
+
 @Service
 @RequiredArgsConstructor
 public class PostService {
     private final MemberRepo memberRepo;
     private final PostRepo postRepo;
 
-    @Point(firstValue = "create")
+    @Point(type = CREATE)
     @Transactional
     public ResponseEntity<?> createPost(Member member, PostDto postDto) {
 
@@ -30,7 +32,7 @@ public class PostService {
         return ResponseEntity.ok().body("ok");
     }
 
-    @Point(firstValue = "delete")
+    @Point(type = DELETE)
     @Transactional
     public ResponseEntity<?> deletePost(Member member, Long seq) {
         postRepo.deleteById(seq);

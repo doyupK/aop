@@ -8,7 +8,12 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Point {
-    String firstValue();
+    Type type();
+
+    enum Type{
+        CREATE,
+        DELETE
+    }
 }
 
 /*
